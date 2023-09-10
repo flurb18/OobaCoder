@@ -1,3 +1,5 @@
+import json
+
 from extensions.OobaCoder.block import Block, InputBlock, OutputBlock, BlockType
 
 blocks_json_defaults = {
