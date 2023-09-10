@@ -17,3 +17,4 @@ class Layout:
         elif block_type_name == "OUTPUT":
             block = OutputBlock()
         self.blocks.append(block)
+        return self.to_html()
