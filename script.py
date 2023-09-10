@@ -61,11 +61,7 @@ def ui():
     ).then(
         layout.new_block,
         inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
-        outputs=[blocks_json]
-    ).then(
-        layout.to_html,
-        inputs=None,
-        outputs=[output]
+        outputs=[blocks_json, output]
     ).then(
         None,
         inputs = [blocks_json],

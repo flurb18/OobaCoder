@@ -1,5 +1,4 @@
 function save_blocks_pos(blocksJSON) {
-    console.log(blocksJSON);
     var blocks_dict = JSON.parse(blocksJSON);
     for (let block_id in blocks_dict) {
         var elmnt = document.getElementById(block_id);

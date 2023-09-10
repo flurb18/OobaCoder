@@ -26,5 +26,5 @@ class Layout:
             return blocks_json
         self.blocks.append(block)
         blocks_dict[block.id] = blocks_json_defaults.copy()
-        return json.dumps(blocks_dict)
+        return json.dumps(blocks_dict), self.to_html()
         

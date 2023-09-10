@@ -1,10 +1,4 @@
 function process_blocks(blocksJSON) {
-  const blocks_dict = JSON.parse(blocksJSON);
-
-  for (let block_id in blocks_dict) {
-    setElementPosition(block_id, blocks_dict[block_id]['x'], blocks_dict[block_id]['y'])
-    makeElementDraggable(block_id);
-  }
 
   function setElementPosition(elementId, x, y) {
     var elmnt = document.getElementById(elementId);
@@ -52,6 +46,13 @@ function process_blocks(blocksJSON) {
       document.onmouseup = null;
       document.onmousemove = null;
     }
+  }
+
+  const blocks_dict = JSON.parse(blocksJSON);
+
+  for (let block_id in blocks_dict) {
+    setElementPosition(block_id, blocks_dict[block_id]['x'], blocks_dict[block_id]['y'])
+    makeElementDraggable(block_id);
   }
 }
 
