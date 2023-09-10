@@ -1,6 +1,5 @@
 function makeElementDraggable(elementId) {
-    console.log(elementId);
-    var elmnt = document.getElementById(elementId);
+    var elmnt = gradioApp().querySelector('#'+elementId);
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     var minx = elmnt.parentNode.style.left;
     var miny = elmnt.parentNode.style.top;
