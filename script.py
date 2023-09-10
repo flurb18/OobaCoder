@@ -56,7 +56,7 @@ def ui():
     new_block_submit.click(
         None,
         inputs = [blocks_json],
-        ouptuts = [blocks_json],
+        outputs = [blocks_json],
         _js = js_funcs["save_blocks_pos"]
     ).then(
         layout.new_block,
