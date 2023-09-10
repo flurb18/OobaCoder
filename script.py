@@ -23,8 +23,8 @@ def ui():
                     new_block_label = gr.Textbox(label="Block Label", interactive=True)
                     new_block_submit = gr.Button("Create Block")
                 new_block_params_labeled = [
-                    ( "INPUT-type", gr.Dropdown(label="Input Type", choices=["Upload File", "Input Text"], visible=False) )
-                    ( "INPUT-text", gr.Textbox(label="Input Text", interactive=True, visiable=False) )
+                    ( "INPUT-type", gr.Dropdown(label="Input Type", choices=["Upload File", "Input Text"], visible=False) ),
+                    ( "INPUT-text", gr.Textbox(label="Input Text", interactive=True, visible=False) ),
                     ( "OUTPUT-type", gr.Dropdown(label="Output Type", choices=["View Text", "Download As File"], visible=False) )
                 ]
                 new_block_param_names = [i[0] for i in new_block_params_labeled]
@@ -45,7 +45,7 @@ def ui():
 
     new_block_submit.click(
         layout.new_block,
-        inputs=[new_block_label + new_block_type_picker]+new_block_params,
+        inputs=[new_block_label, new_block_type_picker]+new_block_params,
         ouputs=[output]
     )
 
