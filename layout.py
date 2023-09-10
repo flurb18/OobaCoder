@@ -17,6 +17,7 @@ class Layout:
         return html_string
 
     def new_block(self, blocks_json, label, block_type_name, input_type, input_text, output_type):
+        print("Hello")
         blocks_dict = json.loads(blocks_json)
         if block_type_name == "INPUT":
             block = InputBlock()

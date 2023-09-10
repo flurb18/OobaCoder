@@ -54,7 +54,7 @@ def ui():
 
     blocks_json = gr.Textbox(value="{}",visible=False)
     new_block_submit.click(
-        None,
+        lambda x:x,
         inputs = [blocks_json],
         outputs = [blocks_json],
         _js = js_funcs["save_blocks_pos"]
