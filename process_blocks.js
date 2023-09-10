@@ -2,8 +2,8 @@ function process_blocks(blocksJSON) {
 
   function setElementPosition(elementId, x, y) {
     var elmnt = document.getElementById(elementId);
-    elmnt.style.left = x+"px";
-    elmnt.style.top = y+"px";
+    elmnt.style.left = x + 'px';
+    elmnt.style.top = y + 'px';
   }
   
   function makeElementDraggable(elementId) {
@@ -11,9 +11,9 @@ function process_blocks(blocksJSON) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     var minx = elmnt.parentNode.style.left;
     var miny = elmnt.parentNode.style.top;
-    if (document.getElementById(elementId + "header")) {
+    if (document.getElementById(elementId + 'header')) {
       // if present, the header is where you move the DIV from:
-      document.getElementById(elementId + "header").onmousedown = dragMouseDown;
+      document.getElementById(elementId + 'header').onmousedown = dragMouseDown;
     } else {
       // otherwise, move the DIV from anywhere inside the DIV:
       elmnt.onmousedown = dragMouseDown;
@@ -37,8 +37,8 @@ function process_blocks(blocksJSON) {
       pos3 = e.clientX;
       pos4 = e.clientY;
       // set the element's new position:
-      elmnt.style.top = Math.max(elmnt.offsetTop - pos2, miny) + "px";
-      elmnt.style.left = Math.max(elmnt.offsetLeft - pos1, minx) + "px";
+      elmnt.style.top = Math.max(elmnt.offsetTop - pos2, miny) + 'px';
+      elmnt.style.left = Math.max(elmnt.offsetLeft - pos1, minx) + 'px';
     }
   
     function closeDragElement() {
