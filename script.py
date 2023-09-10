@@ -46,7 +46,7 @@ def ui():
     new_block_submit.click(
         layout.new_block,
         inputs=[new_block_label, new_block_type_picker]+new_block_params,
-        ouputs=[output]
+        outputs=[output]
     )
 
     output.change(
