@@ -19,7 +19,4 @@ class Layout:
         else:
             return self.to_html()
         self.blocks.append(block)
-        return self.to_html()
-
-    def mostRecentBlockId(self):
-        return self.blocks[-1].id if len(self.blocks) > 0 else None
+        return self.to_html(), block.id

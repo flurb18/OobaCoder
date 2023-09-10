@@ -42,14 +42,15 @@ def ui():
         inputs=[new_block_type_picker],
         outputs=new_block_params
     )
-
+    
+    newest_block_id = gr.State("")
     new_block_submit.click(
         layout.new_block,
         inputs=[new_block_label, new_block_type_picker]+new_block_params,
-        outputs=[output]
+        outputs=[output, newest_block_id]
     ).then(
         None,
-        inputs = [layout.mostRecentBlockId()],
+        inputs = [newest_block_id],
         outputs = None,
         _js="(x) => makeElementDraggable(x);"
     )
