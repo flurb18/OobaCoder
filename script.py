@@ -11,6 +11,9 @@ params = {
 
 OobaCoderDir = Path(__file__).parent
 
+with open(str(OobaCoderDir.joinpath("drag.js")), "r") as f:
+    drag_js = f.read().strip()
+
 layout = Layout()
 
 def ui():
@@ -52,13 +55,8 @@ def ui():
         None,
         inputs = [newest_block_id],
         outputs = None,
-        _js="function (x) { makeElementDraggable(x); }"
+        _js = drag_js
     )
-
-def custom_js():
-    with open(str(OobaCoderDir.joinpath("custom.js")), "r") as f:
-        js_string = f.read().strip()
-    return js_string
 
 def custom_css():
     with open(str(OobaCoderDir.joinpath("custom.css")), "r") as f:
