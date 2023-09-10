@@ -46,7 +46,7 @@ def ui():
         outputs=new_block_params
     )
 
-    newest_block_id = gr.State("")
+    newest_block_id = gr.Textbox(value="",visible=False)
     new_block_submit.click(
         layout.new_block,
         inputs=[new_block_label, new_block_type_picker]+new_block_params,
