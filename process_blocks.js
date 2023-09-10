@@ -51,7 +51,7 @@ function process_blocks(blocksJSON) {
   const blocks_dict = JSON.parse(blocksJSON);
 
   for (let block_id in blocks_dict) {
-    setElementPosition(block_id, blocks_dict[block_id]['x'], blocks_dict[block_id]['y'])
+    setElementPosition(block_id, blocks_dict[block_id]['x'], blocks_dict[block_id]['y']);
     makeElementDraggable(block_id);
   }
 }
