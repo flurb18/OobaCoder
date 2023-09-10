@@ -52,8 +52,8 @@ def ui():
     output.change(
         None,
         inputs=[block.id for block in layout.blocks],
-        None,
-        _js = "function (...blockids) { for (const blockid of blockids) { makeElementDraggable(blockid); } }"
+        outputs=None,
+        _js="function (...blockids) { for (const blockid of blockids) { makeElementDraggable(blockid); } }"
     )
 
 def custom_js():
