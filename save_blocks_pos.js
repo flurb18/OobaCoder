@@ -5,5 +5,6 @@ function save_blocks_pos(blocksJSON) {
         blocks_dict[block_id]['x'] = elmnt.style.left;
         blocks_dict[block_id]['y'] = elmnt.style.top;
     }
+    console.log("poop")
     return JSON.stringify(blocks_dict);
 }

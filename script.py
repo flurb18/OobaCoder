@@ -41,7 +41,7 @@ def ui():
 
         with gr.Column(scale=2):
             # Display
-            output = gr.Textbox(value="")
+            output = gr.HTML(value="")
 
     def show_block_type_menu(block_type_name):
         return [gr.update(visible=True) if n.startswith(block_type_name) else gr.update(visible=False) for n in new_block_param_names]

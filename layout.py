@@ -23,7 +23,7 @@ class Layout:
         elif block_type_name == "OUTPUT":
             block = OutputBlock()
         else:
-            return blocks_json
+            return blocks_json, self.to_html()
         self.blocks.append(block)
         blocks_dict[block.id] = blocks_json_defaults.copy()
         return json.dumps(blocks_dict), self.to_html()
