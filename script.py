@@ -52,12 +52,17 @@ def ui():
         outputs=new_block_params
     )
 
-    blocks_json = gr.Textbox(value="{}",visible=False)
+    blocks_json = gr.Text(value="{}",visible=False)
     new_block_submit.click(
         None,
         inputs = [blocks_json],
         outputs = [blocks_json],
         _js = js_funcs["save_blocks_pos"]
+    ).then(
+        None,
+        inputs = None,
+        outputs = None,
+        _js = "() => console.log('here');"
     ).then(
         layout.new_block,
         inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
