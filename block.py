@@ -15,7 +15,7 @@ class Block:
         self.label = label
         self.id = secrets.token_hex(16)
 
-    def html_contents():
+    def html_contents(self):
         return f"<p>{self.label}</p>"
 
     def to_html(self):

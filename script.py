@@ -30,7 +30,7 @@ def ui():
                 new_block_param_names = [i[0] for i in new_block_params_labeled]
                 new_block_params = [i[1] for i in new_block_params_labeled]
 
-        with gr.Column(scale=5):
+        with gr.Column(scale=2):
             # Display
             output = gr.HTML(value="")
 
