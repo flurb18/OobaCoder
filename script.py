@@ -63,7 +63,7 @@ def ui():
         inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
         outputs=[blocks_json, output]
     ).then(
-        lambda x:,
+        None,
         inputs = [blocks_json],
         outputs = None,
         _js = js_funcs["process_blocks"]
