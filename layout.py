@@ -21,6 +21,7 @@ class Layout:
 
     def new_block(self, blocks_json):
         blocks_dict = json.loads(blocks_json)
+        print(self.new_block_type_name)
         if self.new_block_type_name == "INPUT":
             block = InputBlock()
         elif self.new_block_type_name == "OUTPUT":
