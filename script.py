@@ -49,7 +49,7 @@ def ui():
         outputs=[output]
     ).then(
         None,
-        inputs = [layout.blocks[-1].id],
+        inputs = [layout.mostRecentBlockId()],
         outputs = None,
         _js="(x) => makeElementDraggable(x);"
     )
