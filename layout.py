@@ -5,7 +5,7 @@ class Layout:
         self.blocks = []
 
     def to_html(self):
-        html_string = """<div class="layout">"""
+        html_string = """<div>"""
         for block in self.blocks:
             html_string += block.to_html()
         html_string += "</div>"
