@@ -11,8 +11,14 @@ params = {
 
 OobaCoderDir = Path(__file__).parent
 
-with open(str(OobaCoderDir.joinpath("drag.js")), "r") as f:
-    drag_js = f.read().strip()
+js_funcs = {
+    "process_blocks" : "",
+    "save_blocks_pos" : ""
+}
+
+for js_func_name in js_funcs.keys():
+    with open(str(OobaCoderDir.joinpath(js_func_name+".js")), "r") as f:
+        js_funcs[js_func_name] = f.read().strip()
 
 layout = Layout()
 
@@ -46,16 +52,25 @@ def ui():
         outputs=new_block_params
     )
 
-    newest_block_id = gr.Textbox(value="",visible=False)
+    blocks_json = gr.Textbox(value="{}",visible=False)
     new_block_submit.click(
+        None,
+        inputs = [blocks_json],
+        ouptuts = [blocks_json],
+        _js = js_funcs["save_blocks_pos"]
+    ).then(
         layout.new_block,
-        inputs=[new_block_label, new_block_type_picker]+new_block_params,
-        outputs=[output, newest_block_id]
+        inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
+        outputs=[blocks_json]
+    ).then(
+        layout.to_html,
+        inputs=None,
+        outputs=[output]
     ).then(
         None,
-        inputs = [newest_block_id],
+        inputs = [blocks_json],
         outputs = None,
-        _js = drag_js
+        _js = js_funcs["process_blocks"]
     )
 
 def custom_css():

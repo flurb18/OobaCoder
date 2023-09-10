@@ -1,5 +1,10 @@
 from extensions.OobaCoder.block import Block, InputBlock, OutputBlock, BlockType
 
+blocks_json_defaults = {
+    'x' : 1000,
+    'y' : 1000
+}
+
 class Layout:
     def __init__(self):
         self.blocks = []
@@ -11,12 +16,15 @@ class Layout:
         html_string += "</div>"
         return html_string
 
-    def new_block(self, label, block_type_name, input_type, input_text, output_type):
+    def new_block(self, blocks_json, label, block_type_name, input_type, input_text, output_type):
+        blocks_dict = json.loads(blocks_json)
         if block_type_name == "INPUT":
             block = InputBlock()
         elif block_type_name == "OUTPUT":
             block = OutputBlock()
         else:
-            return self.to_html()
+            return blocks_json
         self.blocks.append(block)
-        return self.to_html(), block.id
+        blocks_dict[block.id] = blocks_json_defaults.copy()
+        return json.dumps(blocks_dict)
+        

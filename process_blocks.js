@@ -1,4 +1,18 @@
-function makeElementDraggable(elementId) {
+function process_blocks(blocksJSON) {
+  const blocks_dict = JSON.parse(blocksJSON);
+
+  for (let block_id in blocks_dict) {
+    setElementPosition(block_id, blocks_dict[block_id]['x'], blocks_dict[block_id]['y'])
+    makeElementDraggable(block_id);
+  }
+
+  function setElementPosition(elementId, x, y) {
+    var elmnt = document.getElementById(elementId);
+    elmnt.style.left = x+"px";
+    elmnt.style.top = y+"px";
+  }
+  
+  function makeElementDraggable(elementId) {
     var elmnt = document.getElementById(elementId);
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     var minx = elmnt.parentNode.style.left;
@@ -39,3 +53,5 @@ function makeElementDraggable(elementId) {
       document.onmousemove = null;
     }
   }
+}
+
