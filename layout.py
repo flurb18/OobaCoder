@@ -1,8 +1,8 @@
 from extensions.OobaCoder.block import Block, InputBlock, OutputBlock, BlockType
 
 blocks_json_defaults = {
-    'x' : 1000,
-    'y' : 1000
+    'x' : 0,
+    'y' : 0
 }
 
 class Layout:
