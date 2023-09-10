@@ -29,9 +29,9 @@ class Block:
 
 class InputBlock(Block):
     def __init__(self):
-        super("INPUT", "Input Block")
+        super().__init__("INPUT", "Input Block")
 
 
 class OutputBlock(Block):
     def __init__(self):
-        super("OUTPUT", "Output Block")
+        super().__init__("OUTPUT", "Output Block")
