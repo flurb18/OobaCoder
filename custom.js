@@ -1,6 +1,8 @@
 function makeElementDraggable(elementId) {
     var elmnt = document.getElementById(elementId)
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    var minx = elmnt.parentNode.style.left;
+    var miny = elmnt.parentNode.style.top;
     if (document.getElementById(elementId + "header")) {
       // if present, the header is where you move the DIV from:
       document.getElementById(elementId + "header").onmousedown = dragMouseDown;
@@ -27,8 +29,8 @@ function makeElementDraggable(elementId) {
       pos3 = e.clientX;
       pos4 = e.clientY;
       // set the element's new position:
-      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      elmnt.style.top = Math.max(elmnt.offsetTop - pos2, miny) + "px";
+      elmnt.style.left = Math.max(elmnt.offsetLeft - pos1, minx) + "px";
     }
   
     function closeDragElement() {

@@ -47,13 +47,11 @@ def ui():
         layout.new_block,
         inputs=[new_block_label, new_block_type_picker]+new_block_params,
         outputs=[output]
-    )
-
-    output.change(
+    ).then(
         None,
-        inputs=[block.id for block in layout.blocks],
-        outputs=None,
-        _js="function (...blockids) { for (const blockid of blockids) { makeElementDraggable(blockid); } }"
+        inputs = [layout.blocks[-1].id],
+        outputs = None,
+        _js="(x) => makeElementDraggable(x);"
     )
 
 def custom_js():
