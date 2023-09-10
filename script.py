@@ -52,12 +52,17 @@ def ui():
         outputs=new_block_params
     )
 
-    blocks_json = gr.Text(value="{}",visible=False)
+    blocks_json = gr.Text(value="{}",visible = False)
+    blocks_json_tmp = gr.Text(value="{}", visible = False)
     new_block_submit.click(
         None,
         inputs = [blocks_json],
-        outputs = [blocks_json],
+        outputs = [blocks_json_tmp],
         _js = js_funcs["save_blocks_pos"]
+    ).then(
+        lambda x:x,
+        inputs = [blocks_json_tmp],
+        outputs = [blocks_json]
     ).then(
         layout.new_block,
         inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
