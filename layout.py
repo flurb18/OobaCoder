@@ -1,4 +1,4 @@
-from extensions.OobaCoder.block import Block, BlockType
+from extensions.OobaCoder.block import Block, InputBlock, OutputBlock, BlockType
 
 class Layout:
     def __init__(self):

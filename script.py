@@ -1,7 +1,7 @@
 import gradio as gr
 from pathlib import Path
 
-from extensions.OobaCoder.block import BlockType, BlockMenu
+from extensions.OobaCoder.block import BlockType
 from extensions.OobaCoder.layout import Layout
 
 params = {
