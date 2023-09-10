@@ -42,7 +42,7 @@ def ui():
         inputs=[new_block_type_picker],
         outputs=new_block_params
     )
-    
+
     newest_block_id = gr.State("")
     new_block_submit.click(
         layout.new_block,
@@ -52,7 +52,7 @@ def ui():
         None,
         inputs = [newest_block_id],
         outputs = None,
-        _js="(x) => makeElementDraggable(x);"
+        _js="function (x) { makeElementDraggable(x); }"
     )
 
 def custom_js():
