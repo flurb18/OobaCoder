@@ -1,5 +1,4 @@
 function process_blocks(blocksJSON) {
-  asdfasdfasdfasdf
   const blocks_dict = JSON.parse(blocksJSON);
 
   for (let block_id in blocks_dict) {
