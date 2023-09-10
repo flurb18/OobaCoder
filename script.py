@@ -37,7 +37,7 @@ def ui():
                     ( "OUTPUT-type", gr.Dropdown(label="Output Type", choices=["View Text", "Download As File"], visible=False) )
                 ]
                 new_block_param_names = [i[0] for i in new_block_params_labeled]
-                new_block_params = [i[1] for i in new_block_params_labeled]
+                new_block_param_components = [i[1] for i in new_block_params_labeled]
 
         with gr.Column(scale=2):
             # Display
@@ -49,24 +49,31 @@ def ui():
     new_block_type_picker.input(
         show_block_type_menu,
         inputs=[new_block_type_picker],
-        outputs=new_block_params
+        outputs=new_block_param_components
     )
 
+    def gather_new_block_parameters(label, type_name, *args):
+        layout.new_block_label = label
+        layout.new_block_type_name = type_name
+        i = 0
+        for arg in args:
+            layout.new_block_params[new_block_param_names[i]] = arg
+            i += 1
+
     blocks_json = gr.Text(value="{}",visible = False)
-    blocks_json_tmp = gr.Text(value="{}", visible = False)
     new_block_submit.click(
-        None,
-        inputs = [blocks_json],
-        outputs = [blocks_json_tmp],
-        _js = js_funcs["save_blocks_pos"]
-    ).then(
-        lambda x:x,
-        inputs = [blocks_json_tmp],
-        outputs = [blocks_json]
+        gather_new_block_parameters,
+        inputs = [new_block_label, new_block_type_picker] + new_block_param_components,
+        outputs = None
     ).then(
         layout.new_block,
-        inputs=[blocks_json, new_block_label, new_block_type_picker]+new_block_params,
-        outputs=[blocks_json, output]
+        inputs=[blocks_json],
+        outputs=[blocks_json],
+        _js = js_funcs["save_blocks_pos"]
+    ).then(
+        layout.to_html,
+        inputs = None,
+        outputs = [output]
     ).then(
         None,
         inputs = [blocks_json],

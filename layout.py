@@ -8,6 +8,9 @@ blocks_json_defaults = {
 class Layout:
     def __init__(self):
         self.blocks = []
+        self.new_block_params = {}
+        self.new_block_label = ""
+        self.new_block_type_name = ""
 
     def to_html(self):
         html_string = """<div class="layout">"""
@@ -16,16 +19,15 @@ class Layout:
         html_string += "</div>"
         return html_string
 
-    def new_block(self, blocks_json, label, block_type_name, input_type, input_text, output_type):
-        print("Hello")
+    def new_block(self, blocks_json):
         blocks_dict = json.loads(blocks_json)
-        if block_type_name == "INPUT":
+        if self.new_block_type_name == "INPUT":
             block = InputBlock()
-        elif block_type_name == "OUTPUT":
+        elif self.new_block_type_name == "OUTPUT":
             block = OutputBlock()
         else:
-            return blocks_json, self.to_html()
+            return blocks_json
         self.blocks.append(block)
         blocks_dict[block.id] = blocks_json_defaults.copy()
-        return json.dumps(blocks_dict), self.to_html()
+        return json.dumps(blocks_dict)
         
